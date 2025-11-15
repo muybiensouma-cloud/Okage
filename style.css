@@ -1,71 +1,183 @@
-/* 既存のスタイル ... */
+/* ========== 基本スタイル ========== */
 body {
     background-color: #f0f0f0; 
     text-align: center;     
-    font-family: 'Arial', sans-serif; /* 見やすいフォントに変更 */
+    /* フォントはヒラギノを基本にする */
+    font-family: 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', 'Hiragino Sans', 'Meiryo', 'メイリオ', sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-h1 {
-    color: #333; /* 落ち着いた色に変更 */
+
+/* ========== 【改修】ヘッダーのデザイン ========== */
+header {
+    background-color: #ffffff;
+    padding: 15px 30px;
+    display: flex;             /* 中身を横並びに */
+    justify-content: space-between; /* 左側(left)と右側(right)を両端に */
+    align-items: center;       /* 上下中央揃え */
+    border-bottom: 1px solid #eee;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
-h2 {
+/* ヘッダーの左側 (ロゴ + ナビ) */
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+}
+
+/* ナビゲーション (ロゴの隣に) */
+nav {
+    margin-left: 30px; /* ロゴとの隙間 */
+}
+nav ul {
+    list-style: none; /* ・を消す */
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+nav li {
+    margin-left: 25px; /* 各項目の隙間 */
+}
+nav a {
+    color: #00cc00; /* 希望の緑 */
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+nav a:hover {
+    color: #00ff00; /* 光る緑 */
+}
+
+/* ヘッダーの右側 (検索フォーム) */
+.search-form input[type="text"] {
+    border: 1px solid #ccc;
+    border-radius: 15px; /* 丸い検索窓 */
+    padding: 8px 15px;
+    font-size: 0.9em;
+    outline: none; /* クリック時の青い枠を消す */
+    transition: all 0.2s;
+}
+/* 検索窓をクリックした時 */
+.search-form input[type="text"]:focus {
+    border-color: #00cc00; /* 枠を緑に */
+    box-shadow: 0 0 5px rgba(0,204,0,0.3); /* 緑の影 */
+}
+
+
+/* ========== 【改修】カウントダウンセクション ========== */
+.countdown-section {
+    width: 90%; /* 画面いっぱいではなく少し内側に */
+    max-width: 800px; /* PCでも広がりすぎないように */
+    margin: 50px auto; /* 上下に50px、左右は自動で中央 */
+}
+
+/* 「旅行まであと...」のラベル */
+.countdown-section h2 {
+    text-align: left; /* ご希望の左上！ */
+    font-size: 1.2em;
+    font-weight: bold;
     color: #555;
-    font-weight: normal;
+    margin: 0 0 10px 10px; /* 下と左に少し余白 */
 }
 
-/* ↓↓↓ カウントダウンタイマーのデザインを追加 ↓↓↓ */
-
+/* カウントダウンの数字 */
 #countdown {
-    background-color: #222; 
-    color: #00ff00;         
-    font-size: 2.5em;       
-    font-family: 'Courier New', Courier, monospace; 
-    padding: 20px 0;          /* paddingを上下のみに変更（左右は0） */
-    border-radius: 0px;       /* 横幅いっぱいなので角丸をなくす */
-    margin: 20px 0;         
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3); 
-    text-align: center;       /* 中身のテキストを中央揃え（念のため） */
+    color: #333;
+    font-family: 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', 'Hiragino Sans', 'Meiryo', 'メイリオ', sans-serif;
+    font-size: 3.0em;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px 0;
 }
 
-/* 日・時間・分・秒の「単位」の文字スタイル */
+/* 「日」「時間」「分」「秒」の単位 */
 #countdown span:not([id]) {
-    color: #ccc;     /* 単位の文字を白っぽく */
-    font-size: 0.5em; /* 単位は少し小さく */
+    color: #666;
+    font-size: 0.4em;
     margin-left: 5px;
     margin-right: 15px;
 }
 
-/* ↓↓↓ リンクのスタイルを追加 ↓↓↓ */
 
-/* 通常時のリンク */
-a {
-    color: #00cc00; /* カウントダウンより少し落ち着いた緑 */
-    text-decoration: none; /* よくある下線を消す */
-    font-weight: bold;     /* 少し目立たせる */
-    transition: all 0.2s ease; /* 色が変わる時フワッとさせる */
+/* ========== 【新設】区切り線 ========== */
+.section-divider {
+    border: 0;
+    height: 1px;
+    background: #e0e0e0; /* 薄いグレーの線 */
+    width: 80%; /* 画面幅の80% */
+    margin: 50px auto; /* 上下に余白 */
 }
 
-/* マウスが乗った時 or タップした時 */
-a:hover, a:active {
-    color: #00ff00; /* カウントダウンと同じ明るい緑に！ */
-    text-decoration: underline; /* この時だけ下線を出す */
+/* ========== 【新設】今までの旅の記録セクション ========== */
+.past-trips {
+    text-align: center;
+    margin-bottom: 50px;
+}
+.past-trips h2 {
+    font-size: 1.8em;
+    color: #444;
+}
+.past-trips p {
+    color: #777;
+    font-size: 1.1em;
 }
 
-/* ↓↓↓ スマホ用のスタイルをここに追加 ↓↓↓ */
 
-/* 画面の横幅が 600px 以下の場合に、この { } の中が有効になる */
+/* ========== 既存のリンク ========== */
+p a {
+    color: #990099; /* 紫色（おかげ横丁のリンク） */
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+p a:hover {
+    color: #cc00cc;
+    text-decoration: underline;
+}
+
+/* ========== スマホ用スタイル (@media) ========== */
 @media (max-width: 600px) {
-
-    /* 例: カウントダウンタイマーの文字を少し小さくする */
-    #countdown {
-        font-size: 1.8em; /* PCでは 2.5em だったのを、スマホでは 1.8em に変更 */
-        padding: 15px 0;  /* 上下の余白も少し詰める */
+    
+    header {
+        flex-direction: column; /* ヘッダーの中身を縦積みにする */
+        padding: 15px;
+    }
+    .header-left {
+        flex-direction: column; /* ロゴとナビも縦積みに */
+        margin-bottom: 15px;
+    }
+    nav {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+    nav li {
+        margin-left: 15px; /* 少し詰める */
+        margin-right: 15px;
+    }
+    .search-form {
+        width: 90%;
+        margin: 0 auto;
+    }
+    .search-form input[type="text"] {
+        width: 100%; /* スマホでは検索窓を横幅いっぱいに */
+        box-sizing: border-box; /* 枠線がはみ出ないように */
     }
 
-    /* 例: 見出し(h1)もスマホでは小さくする */
-    h1 {
+    /* カウントダウンの数字をスマホで小さく */
+    #countdown {
+        font-size: 1.8em;
+    }
+    
+    .past-trips h2 {
         font-size: 1.5em;
     }
-
 }
