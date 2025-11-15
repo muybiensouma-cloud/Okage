@@ -1,95 +1,140 @@
-/* ========== 基本スタイル ========== */
+/* ========== 1. 基本スタイル ========== */
 body {
-    background-color: #f0f0f0; 
-    text-align: center;     
-    /* フォントはヒラギノを基本にする */
+    background-color: #F5EFE6; /* 優しい茶色（ベージュ）の背景 */
+    color: #5D4037;           /* 文字の基本色を濃い茶色に */
+    
     font-family: 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', 'Hiragino Sans', 'Meiryo', 'メイリオ', sans-serif;
     margin: 0;
     padding: 0;
+    text-align: center;
 }
 
-
-/* ========== 【改修】ヘッダーのデザイン ========== */
+/* ========== 2. 【改修】ヘッダーのデザイン ========== */
 header {
     background-color: #ffffff;
-    padding: 15px 30px;
-    display: flex;             /* 中身を横並びに */
-    justify-content: space-between; /* 左側(left)と右側(right)を両端に */
-    align-items: center;       /* 上下中央揃え */
+    height: 70px; /* ヘッダーの固定高さ */
+    display: flex;
+    justify-content: space-between; /* 左右のブロックを両端に */
+    align-items: stretch;       /* 子要素の高さをヘッダーに揃える(重要) */
     border-bottom: 1px solid #eee;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
-/* ヘッダーの左側 (ロゴ + ナビ) */
+/* 【改修】ヘッダーの左側 (ロゴ + ナビ) */
 .header-left {
     display: flex;
-    align-items: center;
+    align-items: stretch; /* 中身の高さを揃える */
 }
 
+/* 【改修】ロゴ (任天堂スタイル) */
 .logo {
     font-size: 1.5em;
     font-weight: bold;
-    color: #333;
+    color: #ffffff;
     text-decoration: none;
+    
+    background-color: #795548; /* 茶色の背景 */
+    transition: background-color 0.2s ease;
+    
+    /* 【重要】上下のpaddingを0にして、高さを100%に */
+    padding: 0 30px; /* 上下0, 左右30px */
+    height: 100%;
+    
+    /* 中の文字を上下中央に配置 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* paddingが高さに影響しないように */
+    box-sizing: border-box; 
+}
+.logo:hover {
+    background-color: #5D4037;
 }
 
-/* ナビゲーション (ロゴの隣に) */
+/* 【改修】ナビゲーション (ロゴの隣) */
 nav {
     margin-left: 30px; /* ロゴとの隙間 */
+    display: flex;     /* これを追加 */
+    align-items: center; /* ナビの項目を上下中央に配置 */
 }
 nav ul {
-    list-style: none; /* ・を消す */
+    list-style: none;
     display: flex;
     margin: 0;
     padding: 0;
 }
 nav li {
-    margin-left: 25px; /* 各項目の隙間 */
+    margin-right: 25px; /* 右側に隙間 */
 }
 nav a {
-    color: #00cc00; /* 希望の緑 */
+    color: #5D4037;
     text-decoration: none;
     font-size: 1.1em;
     font-weight: bold;
+    
+    position: relative;
+    padding-bottom: 8px;
     transition: all 0.2s ease;
 }
 nav a:hover {
-    color: #00ff00; /* 光る緑 */
+    opacity: 0.7;
+}
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #5D4037;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+nav a:hover::after {
+    transform: scaleX(1);
 }
 
-/* ヘッダーの右側 (検索フォーム) */
+/* 【改修】ヘッダーの右側 (検索フォームのみ) */
+.header-right {
+    display: flex;
+    align-items: center; /* 検索フォームを上下中央に */
+    padding: 0 30px;   /* ヘッダーの右端に余白 */
+}
 .search-form input[type="text"] {
     border: 1px solid #ccc;
-    border-radius: 15px; /* 丸い検索窓 */
+    border-radius: 15px;
     padding: 8px 15px;
     font-size: 0.9em;
-    outline: none; /* クリック時の青い枠を消す */
+    outline: none;
     transition: all 0.2s;
+    width: 150px;
 }
-/* 検索窓をクリックした時 */
 .search-form input[type="text"]:focus {
-    border-color: #00cc00; /* 枠を緑に */
-    box-shadow: 0 0 5px rgba(0,204,0,0.3); /* 緑の影 */
+    border-color: #5D4037;
+    box-shadow: 0 0 5px rgba(93, 64, 55, 0.3);
 }
 
 
-/* ========== 【改修】カウントダウンセクション ========== */
+/* ========== 3. カウントダウン ========== */
 .countdown-section {
-    width: 90%; /* 画面いっぱいではなく少し内側に */
-    max-width: 800px; /* PCでも広がりすぎないように */
-    margin: 50px auto; /* 上下に50px、左右は自動で中央 */
+    width: 90%;
+    max-width: 800px;
+    margin: 50px auto;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    box-sizing: border-box;
 }
-
-/* 「旅行まであと...」のラベル */
+/* ... (以下、カウントダウンや旅の記録、フッターのCSSは変更なし) ... */
 .countdown-section h2 {
-    text-align: left; /* ご希望の左上！ */
+    text-align: left;
     font-size: 1.2em;
     font-weight: bold;
     color: #555;
-    margin: 0 0 10px 10px; /* 下と左に少し余白 */
+    margin: 0 0 10px 10px;
 }
-
-/* カウントダウンの数字 */
 #countdown {
     color: #333;
     font-family: 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', 'Hiragino Sans', 'Meiryo', 'メイリオ', sans-serif;
@@ -98,136 +143,169 @@ nav a:hover {
     text-align: center;
     padding: 10px 0;
 }
-
-/* 「日」「時間」「分」「秒」の単位 */
 #countdown span:not([id]) {
     color: #666;
     font-size: 0.4em;
     margin-left: 5px;
     margin-right: 15px;
 }
-
-
-/* ========== 【新設】区切り線 ========== */
 .section-divider {
     border: 0;
     height: 1px;
-    background: #e0e0e0; /* 薄いグレーの線 */
-    width: 80%; /* 画面幅の80% */
-    margin: 50px auto; /* 上下に余白 */
+    background: #D7CCC8;
+    width: 80%;
+    margin: 50px auto;
 }
-
-/* ========== 【新設】今までの旅の記録セクション ========== */
 .past-trips {
     text-align: center;
     margin-bottom: 50px;
 }
 .past-trips h2 {
     font-size: 1.8em;
-    color: #444;
+    color: #5D4037;
 }
-.past-trips p {
-    color: #777;
-    font-size: 1.1em;
+.trip-gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    width: 90%;
+    max-width: 1000px;
+    margin: 30px auto 0;
 }
-
-
-/* ========== 既存のリンク ========== */
+.trip-card {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    text-align: left;
+    transition: all 0.2s ease;
+}
+.trip-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.trip-card h3 {
+    font-size: 1.3em;
+    color: #333;
+    margin-top: 0;
+}
+.trip-card p {
+    font-size: 0.9em;
+    color: #666;
+    line-height: 1.6;
+}
 p a {
-    color: #990099; /* 紫色（おかげ横丁のリンク） */
+    color: #8D6E63;
     text-decoration: none;
     font-weight: bold;
     transition: all 0.2s ease;
 }
 p a:hover {
-    color: #cc00cc;
+    color: #5D4037;
     text-decoration: underline;
 }
-
-/* ========== 【新設】今までの旅の記録ギャラリー ========== */
-
-.trip-gallery {
-    display: grid; /* CSS Grid を使います */
-    grid-template-columns: 1fr 1fr; /* 画面を2分割 (1fr = 1区画) */
-    gap: 20px; /* カードとカードの間の隙間 */
-    width: 90%;
-    max-width: 1000px; /* 広がりすぎ防止 */
-    margin: 30px auto 0; /* 見出しの下にマージン、左右は中央 */
+footer {
+    background-color: #ffffff;
+    padding: 30px 0;
+    margin-top: 50px;
+    border-top: 1px solid #eee;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.05);
 }
-
-/* 四角いカードのデザイン */
-.trip-card {
-    background-color: #ffffff; /* カードの背景は白 */
-    border: 1px solid #ddd;
-    border-radius: 8px; /* 角を少し丸く */
-    padding: 20px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    text-align: left; /* カードの中の文字は左揃えに */
-    transition: all 0.2s ease;
+.footer-nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin: 0 0 15px 0;
+    padding: 0;
 }
-
-/* カードにマウスが乗ったらフワッと浮かす */
-.trip-card:hover {
-    transform: translateY(-5px); /* Y軸に-5px移動（＝上に浮く） */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+.footer-nav li {
+    margin: 0 20px;
 }
-
-.trip-card h3 {
-    font-size: 1.3em;
-    color: #333;
-    margin-top: 0; /* 上の余白を消す */
+.footer-nav a {
+    color: #5D4037;
+    text-decoration: none;
+    font-weight: bold;
 }
-
-.trip-card p {
+.footer-nav a:hover {
+    opacity: 0.7;
+}
+.copyright {
+    color: #999;
     font-size: 0.9em;
-    color: #666;
-    line-height: 1.6; /* 行間を少しあける */
+    margin: 0;
 }
 
-/* ========== スマホ用スタイル (@media) ========== */
+/* ========== 【改修】スマホ用スタイル ========== */
 @media (max-width: 600px) {
-
-    /* スマホでは「旅の記録」を1列（縦積み）にする */
-    .trip-gallery {
-        grid-template-columns: 1fr; /* 1列表示に変更 */
-        gap: 15px;
-    }
-    
-    .trip-card h3 {
-        font-size: 1.1em;
-    }
     
     header {
-        flex-direction: column; /* ヘッダーの中身を縦積みにする */
-        padding: 15px;
+        height: auto; /* 高さを自動に */
+        flex-direction: column;
+        align-items: stretch;
     }
+    
+    /* 【改修】ロゴとナビが縦に並ぶ */
     .header-left {
-        flex-direction: column; /* ロゴとナビも縦積みに */
-        margin-bottom: 15px;
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+    }
+    .logo {
+        width: 100%;
+        padding: 15px 0; /* スマホでのロゴの高さ */
     }
     nav {
         margin-left: 0;
         margin-top: 10px;
+        margin-bottom: 10px;
+        justify-content: center; /* ナビ項目を中央に */
+    }
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
     }
     nav li {
-        margin-left: 15px; /* 少し詰める */
-        margin-right: 15px;
+        margin: 0 8px 8px 8px;
+    }
+    nav a {
+        font-size: 1.0em;
+        padding-bottom: 3px;
+    }
+
+    /* 【改修】検索フォームが一番下に */
+    .header-right {
+        width: 100%;
+        padding: 0 0 15px 0; /* 下に余白 */
     }
     .search-form {
         width: 90%;
         margin: 0 auto;
     }
     .search-form input[type="text"] {
-        width: 100%; /* スマホでは検索窓を横幅いっぱいに */
-        box-sizing: border-box; /* 枠線がはみ出ないように */
+        width: 100%;
+        box-sizing: border-box;
     }
 
-    /* カウントダウンの数字をスマホで小さく */
+    /* (↓) 以下は変更なし */
+    .countdown-section {
+        width: 90%;
+        padding: 20px;
+    }
     #countdown {
         font-size: 1.8em;
     }
-    
-    .past-trips h2 {
-        font-size: 1.5em;
+    .trip-gallery {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    .trip-card h3 {
+        font-size: 1.1em;
+    }
+    .footer-nav li {
+        margin: 0 10px;
+    }
+    .footer-nav a {
+        font-size: 0.9em;
     }
 }
