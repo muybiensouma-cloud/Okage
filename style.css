@@ -162,21 +162,30 @@ nav a:hover::after {
     width: 80%;
     margin: 50px auto;
 }
+/* 変更後 (↓ 元の状態に戻す) */
 .past-trips {
     text-align: center;
     margin-bottom: 50px;
 }
+/* 既存の .past-trips h2 を、以下に「差し替え」 */
 .past-trips h2 {
     font-size: 1.8em;
     color: #5D4037;
+    
+    /* ↓↓↓ ここからが重要 ↓↓↓ */
+    text-align: left;       /* 文字だけ左寄せ */
+    width: 90%;             /* カード群と同じ幅 */
+    max-width: 1000px;      /* カード群と同じ最大幅 */
+    margin: 0 auto 10px auto; /* コンテナ自体は中央、下に見出しとカードの隙間(10px) */
 }
+/* 変更後 (↓ 元の状態に戻す) */
 .trip-gallery {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
     width: 90%;
     max-width: 1000px;
-    margin: 30px auto 0;
+    margin: 30px auto 0; /* ← 中央寄せ(auto)を復活 */
 }
 /* ↓↓↓ このブロックを丸ごと「追加」してください！ ↓↓↓ */
 .trip-card img {
@@ -285,56 +294,153 @@ footer {
     font-size: 0.9em; /* 少し小さく */
 }
 
+/* ========== 旅先候補地セクション ========== */
+/* 変更後 (↓) */
+/* 変更後 (↓ 元の状態に戻す) */
+.candidates-section {
+    text-align: center;
+    margin-bottom: 50px;
+    padding-top: 50px; /* ナビからのジャンプ用 */
+}
+/* 既存の .candidates-section h2 を、以下に「差し替え」 */
+.candidates-section h2 {
+    font-size: 1.8em;
+    color: #5D4037;
+    
+    /* ↓↓↓ ここからが重要 ↓↓↓ */
+    text-align: left;       /* 文字だけ左寄せ */
+    width: 90%;             /* カード群と同じ幅 */
+    max-width: 1000px;      /* カード群と同じ最大幅 */
+    margin: 0 auto 10px auto; /* コンテナ自体は中央、下に見出しとカードの隙間(10px) */
+}
+
+/* 候補地カードのスタイル */
+.candidate-card {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    text-align: left;
+    transition: all 0.2s ease;
+    overflow: hidden; /* 画像の角丸を反映させるため */
+}
+.candidate-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* 候補地カードの画像 (記録カードとスタイルを統一) */
+.candidate-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+}
+
+/* カード内のテキスト部分の余白 */
+.candidate-content {
+    padding: 20px;
+}
+
+.candidate-card h3 {
+    font-size: 1.3em;
+    color: #333;
+    margin-top: 0;
+}
+.candidate-card p {
+    font-size: 0.9em;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* アピールポイント (箇条書きリスト) */
+.candidate-card ul {
+    font-size: 0.9em;
+    color: #666;
+    margin: 15px 0 20px 20px;
+    padding-left: 0;
+}
+.candidate-card li {
+    margin-bottom: 8px;
+}
+
+/* 【新設】汎用ボタンスタイル */
+.btn {
+    display: block; /* 横幅いっぱいに広がる */
+    background-color: #795548; /* ロゴと同じ茶色 */
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    padding: 12px;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+}
+.btn:hover {
+    background-color: #5D4037; /* 濃い茶色 */
+}
+
 /* ========== 【改修】スマホ用スタイル ========== */
 @media (max-width: 600px) {
     
+    /* ↓↓↓ 既存の @media ... header 関連を... ↓↓↓ */
     header {
-        height: auto; /* 高さを自動に */
-        flex-direction: column;
+        height: 60px; /* 高さを固定 (autoから変更) */
+        flex-direction: row; /* 縦積み(column)から横並び(row)に戻す */
         align-items: stretch;
+        padding: 0; /* 左右の余白を削除 */
     }
     
-    /* 【改修】ロゴとナビが縦に並ぶ */
     .header-left {
-        flex-direction: column;
+        flex-direction: row; /* 横並びに戻す */
         align-items: stretch;
-        width: 100%;
+        width: auto; /* 100%から自動幅に */
     }
     .logo {
-        width: 100%;
-        padding: 15px 0; /* スマホでのロゴの高さ */
+        width: auto; /* 100%から自動幅に */
+        padding: 0 10px; /* 上下0、左右10pxに (小さくする) */
+        font-size: 1.0em; /* ロゴ文字を小さく */
+        /* ロゴが長い場合は、文字を省略する設定（保険） */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100px; /* ロゴの最大幅 */
     }
     nav {
-        margin-left: 0;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        justify-content: center; /* ナビ項目を中央に */
-    }
-    nav ul {
-        flex-wrap: wrap;
+        margin-left: 5px; /* ロゴとの隙間を最小に */
+        margin-top: 0;
+        margin-bottom: 0;
         justify-content: center;
     }
+    nav ul {
+        flex-wrap: nowrap; /* 折り返さない */
+    }
     nav li {
-        margin: 0 8px 8px 8px;
+        margin: 0 3px 0 3px; /* 隙間を最小に */
     }
     nav a {
-        font-size: 1.0em;
+        font-size: 0.8em; /* ナビ文字をかなり小さく */
+        font-weight: normal; /* 細くしてスペース確保 */
         padding-bottom: 3px;
+        padding-left: 2px;
+        padding-right: 2px;
     }
 
-    /* 【改修】検索フォームが一番下に */
     .header-right {
-        width: 100%;
-        padding: 0 0 15px 0; /* 下に余白 */
+        width: auto; /* 100%から自動幅に */
+        padding: 0 8px 0 0; /* 右側の余白を最小に */
     }
     .search-form {
-        width: 90%;
-        margin: 0 auto;
+        width: 70px; /* 検索窓の幅を固定 */
+        margin: 0;
     }
     .search-form input[type="text"] {
-        width: 100%;
+        width: 100%; /* 親の70pxに合わせる */
         box-sizing: border-box;
+        font-size: 0.8em; /* 入力文字も小さく */
+        padding: 4px 8px; /* 内側余白も小さく */
     }
+    /* ↑↑↑ ここまでで差し替え ↑↑↑ */
 
     /* (↓) 以下は変更なし */
     .countdown-section {
@@ -357,4 +463,21 @@ footer {
     .footer-nav a {
         font-size: 0.9em;
     }
+
+    /* 旅の記録のスマホ対応 */
+    .trip-gallery {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    .trip-card h3 {
+        font-size: 1.1em;
+    }
+    
+    /* ↓↓↓ 候補地カードのスマホ対応を追加 ↓↓↓ */
+    .candidate-card h3 {
+        font-size: 1.1em;
+    }
+    /* ↑↑↑ ここまで追加 ↑↑↑ */
+
+
 }
