@@ -144,8 +144,58 @@ p a:hover {
     text-decoration: underline;
 }
 
+/* ========== 【新設】今までの旅の記録ギャラリー ========== */
+
+.trip-gallery {
+    display: grid; /* CSS Grid を使います */
+    grid-template-columns: 1fr 1fr; /* 画面を2分割 (1fr = 1区画) */
+    gap: 20px; /* カードとカードの間の隙間 */
+    width: 90%;
+    max-width: 1000px; /* 広がりすぎ防止 */
+    margin: 30px auto 0; /* 見出しの下にマージン、左右は中央 */
+}
+
+/* 四角いカードのデザイン */
+.trip-card {
+    background-color: #ffffff; /* カードの背景は白 */
+    border: 1px solid #ddd;
+    border-radius: 8px; /* 角を少し丸く */
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    text-align: left; /* カードの中の文字は左揃えに */
+    transition: all 0.2s ease;
+}
+
+/* カードにマウスが乗ったらフワッと浮かす */
+.trip-card:hover {
+    transform: translateY(-5px); /* Y軸に-5px移動（＝上に浮く） */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.trip-card h3 {
+    font-size: 1.3em;
+    color: #333;
+    margin-top: 0; /* 上の余白を消す */
+}
+
+.trip-card p {
+    font-size: 0.9em;
+    color: #666;
+    line-height: 1.6; /* 行間を少しあける */
+}
+
 /* ========== スマホ用スタイル (@media) ========== */
 @media (max-width: 600px) {
+
+    /* スマホでは「旅の記録」を1列（縦積み）にする */
+    .trip-gallery {
+        grid-template-columns: 1fr; /* 1列表示に変更 */
+        gap: 15px;
+    }
+    
+    .trip-card h3 {
+        font-size: 1.1em;
+    }
     
     header {
         flex-direction: column; /* ヘッダーの中身を縦積みにする */
