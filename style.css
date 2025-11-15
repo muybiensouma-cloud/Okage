@@ -1,3 +1,9 @@
+/* ↓↓↓ この3行を style.css の一番上に追加 ↓↓↓ */
+html {
+    scroll-behavior: smooth;
+}
+/* ↑↑↑ ここまで ↑↑↑ */
+
 /* ========== 1. 基本スタイル ========== */
 body {
     background-color: #F5EFE6; /* 優しい茶色（ベージュ）の背景 */
@@ -172,6 +178,18 @@ nav a:hover::after {
     max-width: 1000px;
     margin: 30px auto 0;
 }
+/* ↓↓↓ このブロックを丸ごと「追加」してください！ ↓↓↓ */
+.trip-card img {
+    width: 100%;            /* 親(カード)の横幅いっぱいに広げる */
+    height: 180px;          /* 表示高さを 180px に固定 */
+    object-fit: cover;      /* 縦横比を保ったままトリミング */
+    border-radius: 8px 8px 0 0; /* 上側の角丸 */
+    margin-bottom: 15px;    /* 下の余白 */
+    cursor: pointer;        /* マウスカーソルを指マークにする（クリックできる合図） */
+    display: block;         /* <a> タグとの隙間をなくす */
+}
+/* ↑↑↑ ここまでを追加 ↑↑↑ */
+
 .trip-card {
     background-color: #ffffff;
     border: 1px solid #ddd;

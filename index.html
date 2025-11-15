@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>おかげ横丁 男旅！</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="simple-lightbox.min.css">
 </head>
 <body>
 
@@ -14,7 +15,7 @@
             
             <nav>
                 <ul>
-                    <li><a href="#photos">写真</a></li>
+                    <li><a href="#records">記録</a></li>
                     <li><a href="#candidates">旅先候補地</a></li>
                     <li><a href="#history">創立</a></li>
                     <li><a href="#members">メンバー</a></li>
@@ -40,36 +41,47 @@
 
     <hr class="section-divider">
 
-    <section class="past-trips">
+    <section class="past-trips" id="records">
         <h2>今までの旅の記録</h2>
-        
+    
         <div class="trip-gallery">
             
             <div class="trip-card">
-                <h3>2024年 夏：〇〇旅行</h3>
-                <p>ここにその旅行の思い出や説明文を書きます。写真も（将来的に）入れられますね。</p>
+                <a href="images/trip 7.JPEG" class="gallery" data-lightbox="group-a">
+                    <img src="images/trip 7.JPEG">
+                </a>
+                
+                <a href="images/trip1.JPEG" class="gallery" data-lightbox="group-a" style="display:none;"></a>
+                <a href="images/trip2.JPEG" class="gallery" data-lightbox="group-a" style="display:none;"></a>
+                
+                <h3>那智の滝</h3>
+                <p>（↑）の画像をクリック</p>
             </div>
 
             <div class="trip-card">
+                <a href="images/trip2.jpg" class="gallery" data-lightbox="group-b">
+                    <img src="images/trip2.jpg" alt="〇〇合宿の写真">
+                </a>
+                
+                <a href="images/trip3.jpg" class="gallery" data-lightbox="group-b" style="display:none;"></a>
+
                 <h3>2025年 春：〇〇合宿</h3>
-                <p>テキストテキスト。2つ目がここに入ります。</p>
+                <p>（↑）の画像をクリックすると、2枚の写真（trip2, 3）がギャラリーで表示されます。</p>
             </div>
 
             <div class="trip-card">
+                <a href="images/trip4.jpg" class="gallery" data-lightbox="group-c">
+                    <img src="images/trip4.jpg" alt="次の記録">
+                </a>
                 <h3>（次の記録）</h3>
-                <p>カードをコピペして増やしていけば、どんどん下に続いていきます。</p>
-            </div>
-
-            <div class="trip-card">
-                <h3>（4つ目の記録）</h3>
-                <p>こんな感じです。</p>
+                <p>これは1枚だけ表示されます。</p>
             </div>
 
         </div>
     </section>
 
 
-    
+    <script src="simple-lightbox.min.js"></script>
     <script src="script.js"></script>
     <footer>
         <div class="footer-nav">
