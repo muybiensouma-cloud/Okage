@@ -38,16 +38,25 @@ const interval = setInterval(updateCountdown, 1000);
 // ページ読み込み時に一度実行（チラツキ防止）
 updateCountdown();
 
-// ↓↓↓ ここからSimpleLightboxの初期化コードを追加 ↓↓↓
+// ↓↓↓ 既存の SimpleLightbox の初期化コードを... ↓↓↓
 document.addEventListener('DOMContentLoaded', function() {
     // 'a.gallery' (class="gallery" を持つ <a> タグ) に機能を適用
     var lightbox = new SimpleLightbox('a.gallery', {
         
-        // オプション（お好みでどうぞ）
-        captionsData: 'alt',      // 画像の alt 属性をキャプションとして表示
-        captionDelay: 250,        // 0.25秒後にキャプションを表示
-        closeText: '× 閉じる',    // 閉じるボタンのテキスト
-        navText: ['< 前へ', '次へ >'], // 左右の矢印のテキスト
+        // オプション
+        captionsData: 'alt',      // alt 属性をキャプションとして表示
+        captionDelay: 250,
+        
+        /* ↓↓↓ ここからが変更点 ↓↓↓ */
+        
+        // 1. ループを停止する (これで最後で止まります！)
+        loop: false,
+        
+        // 2. テキストをシンプルに（違和感を減らす）
+        closeText: '×',
+        navText: ['<', '>']
+
+        /* ↑↑↑ ここまでが変更点 ↑↑↑ */
     });
 });
-// ↑↑↑ ここまで ↑↑↑
+// ↑↑↑ これに丸ごと差し替え ↑↑↑

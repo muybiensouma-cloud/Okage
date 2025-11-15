@@ -254,6 +254,37 @@ footer {
     margin: 0;
 }
 
+/* ========== SimpleLightboxのスタイル上書き ========== */
+
+/* ライブラリ全体のフォントをサイトと統一 */
+.sl-wrapper {
+    font-family: 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', 'Hiragino Sans', 'Meiryo', 'メイリオ', sans-serif;
+}
+
+/* 「×」閉じるボタンのスタイル */
+.sl-wrapper .sl-close {
+    font-size: 1.5em; /* バツ印は少し大きめの方が見やすい */
+    font-weight: bold;
+}
+
+/* 「<」「>」矢印ボタンのスタイル */
+.sl-wrapper .sl-prev,
+.sl-wrapper .sl-next {
+    font-size: 1.2em; /* 文字を少し小さく（ご希望通り） */
+    font-weight: bold;
+}
+
+/* 画像の下のキャプション（〇〇旅行の写真1）のスタイル */
+.sl-wrapper .sl-caption {
+    font-size: 0.9em; /* 少し小さく */
+    font-weight: normal;
+}
+
+/* 画像のカウンター（3枚中の1枚目）のスタイル */
+.sl-wrapper .sl-counter {
+    font-size: 0.9em; /* 少し小さく */
+}
+
 /* ========== 【改修】スマホ用スタイル ========== */
 @media (max-width: 600px) {
     
