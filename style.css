@@ -641,49 +641,55 @@ footer {
         align-items: stretch;
         width: auto; /* 100%から自動幅に */
     }
+    /* ↓↓↓ 既存の @media ... header 関連を... ↓↓↓ */
     .logo {
-        width: auto; /* 100%から自動幅に */
-        padding: 0 10px; /* 上下0、左右10pxに (小さくする) */
-        font-size: 1.0em; /* ロゴ文字を小さく */
-        /* ロゴが長い場合は、文字を省略する設定（保険） */
+        width: auto;
+        padding: 0 8px; /* 10px から 8px に詰める */
+        font-size: 1.0em;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        max-width: 100px; /* ロゴの最大幅 */
+        max-width: 80px; /* 100px から 80px に詰める */
     }
     nav {
-        margin-left: 5px; /* ロゴとの隙間を最小に */
+        margin-left: 3px; /* 5px から 3px に詰める */
         margin-top: 0;
         margin-bottom: 0;
         justify-content: center;
     }
     nav ul {
-        flex-wrap: nowrap; /* 折り返さない */
+        flex-wrap: nowrap;
     }
     nav li {
-        margin: 0 3px 0 3px; /* 隙間を最小に */
+        margin: 0 2px 0 2px; /* 3px から 2px に詰める */
     }
     nav a {
-        font-size: 0.8em; /* ナビ文字をかなり小さく */
-        font-weight: normal; /* 細くしてスペース確保 */
+        font-size: 0.75em; /* 0.8em から 0.75em に詰める */
+        font-weight: normal;
         padding-bottom: 3px;
         padding-left: 2px;
         padding-right: 2px;
     }
 
     .header-right {
-        width: auto; /* 100%から自動幅に */
-        padding: 0 8px 0 0; /* 右側の余白を最小に */
+        width: auto;
+        padding: 0 8px 0 0;
     }
     .search-form {
-        width: 70px; /* 検索窓の幅を固定 */
+        width: 90px; /* 70px から 90px に広げる！ */
         margin: 0;
     }
     .search-form input[type="text"] {
-        width: 100%; /* 親の70pxに合わせる */
+        width: 100%;
         box-sizing: border-box;
-        font-size: 0.8em; /* 入力文字も小さく */
-        padding: 4px 8px; /* 内側余白も小さく */
+        font-size: 0.8em;
+        padding: 4px 8px;
+    }
+    
+    /* ↓↓↓ プレースホルダーの文字を小さくするスタイルを追加 ↓↓↓ */
+    .search-form input[type="text"]::placeholder {
+        font-size: 0.9em; /* 文字を少し小さく */
+        color: #aaa;
     }
     /* ↑↑↑ ここまでで差し替え ↑↑↑ */
 
