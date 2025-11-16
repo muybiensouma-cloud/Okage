@@ -60,3 +60,61 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 // ↑↑↑ これに丸ごと差し替え ↑↑↑
+
+document.addEventListener('DOMContentLoaded', function() {
+
+    // ↓↓↓ この検索機能を丸ごと追加 ↓↓↓
+    const searchForm = document.getElementById('search-form');
+    const searchInput = document.getElementById('search-input');
+
+    if (searchForm && searchInput) {
+        searchForm.addEventListener('submit', function(e) {
+            e.preventDefault(); // フォーム送信（リロード）をキャンセル
+            
+            const keyword = searchInput.value.toLowerCase().trim(); // 入力値を取得
+            if (!keyword) return; // キーワードが空なら何もしない
+
+            const sections = document.querySelectorAll('section[data-keywords]');
+            let found = false;
+
+            for (const section of sections) {
+                const keywords = section.dataset.keywords.toLowerCase();
+                if (keywords.includes(keyword)) {
+                    // キーワードが含まれるセクションが見つかった！
+                    const targetId = section.id;
+                    
+                    // スムーズスクロール発火！
+                    location.hash = "#" + targetId;
+                    
+                    //（おまけ）見つかったセクションを一時的に黄色く光らせる
+                    const content = section.querySelector('div[class*="-content"]') || section;
+                    content.style.transition = 'background-color 0.3s ease-out';
+                    content.style.backgroundColor = 'rgba(255, 255, 0, 0.3)'; // 薄い黄色
+                    setTimeout(() => {
+                        content.style.backgroundColor = ''; // 元の色に戻す
+                    }, 1500); // 1.5秒後に戻す
+
+                    found = true;
+                    break; // 最初のヒットで見つかったらループを抜ける
+                }
+            }
+
+            if (!found) {
+                alert('「' + searchInput.value + '」に一致するセクションは見つかりませんでした。\n（例：記録、メンバー、しおり など）');
+            }
+
+            searchInput.value = ''; // 検索窓をクリア
+            searchInput.blur(); // 検索窓からフォーカスを外す
+        });
+    }
+    // ↑↑↑ 検索機能ここまで ↑↑↑
+
+
+    // ↓↓↓ 既存の SimpleLightbox の初期化コード (これはそのまま) ↓↓↓
+    var lightbox = new SimpleLightbox('a.gallery', {
+        loop: false,
+        closeText: '×',
+        navText: ['<', '>']
+    });
+
+});

@@ -1,6 +1,7 @@
 /* ↓↓↓ この3行を style.css の一番上に追加 ↓↓↓ */
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 70px; /* ← これを追加！ */
 }
 /* ↑↑↑ ここまで ↑↑↑ */
 
@@ -123,7 +124,7 @@ nav a:hover::after {
 
 
 /* ========== 3. カウントダウン ========== */
-.countdown-section {
+#countdown-section {
     width: 90%;
     max-width: 800px;
     margin: 50px auto;
@@ -134,7 +135,7 @@ nav a:hover::after {
     box-sizing: border-box;
 }
 /* ... (以下、カウントダウンや旅の記録、フッターのCSSは変更なし) ... */
-.countdown-section h2 {
+#countdown-section h2 {
     text-align: left;
     font-size: 1.2em;
     font-weight: bold;
@@ -326,6 +327,144 @@ p a:hover {
 }
 .btn-small:hover {
     background-color: #5D4037;
+}
+
+/* ========== 創立セクション ========== */
+.history-section {
+    /* しおりセクションと全く同じ */
+    text-align: center;
+    margin-bottom: 50px;
+    padding-top: 50px; /* ナビからのジャンプ用 */
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.history-content {
+    /* しおりセクションとほぼ同じ */
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    width: 90%;
+    max-width: 1000px;
+    margin: 30px auto 0;
+    box-sizing: border-box;
+    padding: 40px 50px; /* 内側の余白を広めにとる */
+}
+.history-content h2 {
+    font-size: 1.8em;
+    color: #5D4037;
+    text-align: left;
+    margin-top: 0; /* カードのpaddingが上の余白になる */
+    margin-bottom: 25px; /* 下の .history-date との隙間 */
+}
+
+/* 結成日のスタイル */
+.history-date {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #8D6E63; /* 少し薄い茶色 */
+    margin-bottom: 25px;
+}
+
+/* 創立の写真スタイル */
+.history-content img {
+    width: 100%;
+    max-width: 600px; /* 大きすぎないように */
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+/* ストーリー本文のスタイル */
+.history-story {
+    font-size: 1.1em;
+    color: #444; /* 少し濃いめの文字で読ませる */
+    line-height: 2.0; /* 行間をたっぷりあける */
+    text-align: left; /* 本文は左詰め */
+    max-width: 700px; /* 1行が長すぎないように */
+    margin: 0 auto; /* 本文ブロック自体は中央 */
+}
+
+/* ========== メンバーセクション ========== */
+.member-section {
+    /* 「創立」セクションとほぼ同じ */
+    text-align: center;
+    margin-bottom: 50px;
+    padding-top: 50px; /* ナビからのジャンプ用 */
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.member-content {
+    /* 「創立」の白いカードとほぼ同じ */
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    width: 90%;
+    max-width: 1000px;
+    margin: 30px auto 0;
+    box-sizing: border-box;
+    padding: 40px 50px;
+}
+
+/* カード内の「メンバー」見出し */
+.member-content h2 {
+    font-size: 1.8em;
+    color: #5D4037;
+    text-align: left;
+    margin-top: 0;
+    margin-bottom: 30px; /* グリッドとの隙間 */
+}
+
+/* 【新設】メンバーグリッド */
+.member-grid {
+    display: grid;
+    /* ↓↓↓ これが魔法のコード ↓↓↓ */
+    /* 1列の最小幅を250pxとし、
+      スペースが許す限り自動で列を追加(auto-fit)し、
+      余ったスペースは均等に分配(1fr)する
+    */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px; /* カード間の隙間 */
+}
+
+/* 【新設】メンバーカード */
+.member-card {
+    background-color: #F5EFE6; /* 背景と同じ薄茶色（カードを目立たせる） */
+    border-radius: 8px;
+    padding: 25px 20px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+/* プロフィール写真（円形） */
+.member-card img {
+    width: 120px; /* 写真のサイズ */
+    height: 120px;
+    border-radius: 50%; /* これで円形になる */
+    object-fit: cover;  /* 写真が潰れないように */
+    margin-bottom: 15px;
+    border: 3px solid #ffffff; /* 白いフチを付ける */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.member-card h3 {
+    font-size: 1.3em;
+    color: #333;
+    margin: 0 0 5px 0;
+}
+
+.member-card .member-role {
+    font-size: 0.9em;
+    color: #795548; /* ロゴと同じ茶色 */
+    font-weight: bold;
+    margin: 0 0 10px 0;
+}
+
+.member-card .member-bio {
+    font-size: 0.9em;
+    color: #666;
+    line-height: 1.6;
+    text-align: left; /* 自己紹介文は読みやすく左詰め */
 }
 
 /* .btn スタイルは既存のものをそのまま使います */

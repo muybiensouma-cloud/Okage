@@ -25,13 +25,13 @@
             </div>
 
         <div class="header-right">
-            <form class="search-form">
-                <input type="text" placeholder="🔍 検索...">
+            <form class="search-form" id="search-form">
+                <input type="text" placeholder="🔍 さがす" id="search-input">
             </form>
         </div>
     </header>
 
-    <section class="countdown-section">
+    <section id="countdown-section">
         <h2>次の旅行まであと...</h2> <div id="countdown">
             <span id="days">00</span>日
             <span id="hours">00</span>時間
@@ -42,7 +42,7 @@
 
     <hr class="section-divider">
 
-    <section class="past-trips" id="records">
+    <section class="past-trips" id="records" data-keywords="記録 写真 今までの旅 那智の滝 画像 みんな BBQ ずんどう">
         <h2>今までの旅の記録</h2>
     
         <div class="trip-gallery">
@@ -114,7 +114,7 @@
         </div>
     </section>
 
-    <section class="candidates-section" id="candidates">
+    <section class="candidates-section" id="candidates" data-keywords="旅先候補地 候補 沖縄 北海道 定番 海 のんびり 水族館 食べ歩き 島 グルメ 海鮮">
         <h2>旅先候補地</h2>
         
         <div class="trip-gallery">
@@ -154,7 +154,77 @@
             </div>
     </section>
 
-    <section class="shiori-section" id="shiori">
+    <section class="history-section" id="history" data-keywords="創立 結成 由来 ずんどうずしよいしょっ">
+        <div class="history-content">
+            <h2>創立</h2> <h3 class="history-date">高校のときにスタート</h3>
+            
+            <img src="images/special1.jpg">
+            
+            <p class="history-story">
+                ずんどうずしよいしょっはみんなでずんどういった後に、なぜか寿司を食いに行こうって話になったところが始まり。スタート時点ではたつやとゆうまはおらんかったかな？
+
+            </p>
+            
+        </div>
+    </section>
+
+    <section class="member-section" id="members" data-keywords="メンバー 紹介 プロフィール">
+        
+        <div class="member-content">
+            <h2>メンバー</h2>
+            
+            <div class="member-grid">
+                
+                <div class="member-card">
+                    <img src="images/ma.PNG">
+                    <h3>ゆうすけ</h3>
+                    <p class="member-role">みんな見守ってて自分もしっかり楽しむやさしい</p>
+                    <p class="member-bio">
+                        うほ、うほほ、うほほほほ！
+                    </p>
+                </div>
+
+                <div class="member-card">
+                    <img src="images/mb.PNG" >
+                    <h3>しょうたろう</h3>
+                    <p class="member-role">ぶっとんでるけどめちゃやさお</p>
+                    <p class="member-bio">
+                        ラーメン食べて寿司食べて旅行していっぱい楽しいことやっていきましょう！
+                    </p>
+                </div>
+                
+                <div class="member-card">
+                    <img src="images/mc.PNG" >
+                    <h3>そうま</h3>
+                    <p class="member-role">自己紹介むず</p>
+                    <p class="member-bio">
+                        今はみんな忙しい時期やけど、ずっっっとみんなと遊んでいたい！
+                    </p>
+                </div>
+                
+                <div class="member-card">
+                    <img src="images/md.PNG" >
+                    <h3>たつや</h3>
+                    <p class="member-role">大人な目線で見るし子供のように楽しむ</p>
+                    <p class="member-bio">
+                        （一言コメント！）
+                    </p>
+                </div>
+                
+                <div class="member-card">
+                    <img src="images/me.PNG" >
+                    <h3>ゆうま</h3>
+                    <p class="member-role">静かやけど好奇心旺盛</p>
+                    <p class="member-bio">
+                        （一言コメント！）
+                    </p>
+                </div>
+                
+            </div> 
+        </div> 
+    </section>
+
+    <section class="shiori-section" id="shiori" data-keywords="しおり PDF ダウンロード">
         <h2>しおり</h2>
         <div class="shiori-content">
             
@@ -185,6 +255,8 @@
             </ul>
         </div>
     </section>
+
+    
 
 
     <script src="simple-lightbox.min.js"></script>
