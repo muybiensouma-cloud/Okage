@@ -692,6 +692,13 @@ footer {
         color: #aaa;
     }
     /* ↑↑↑ ここまでで差し替え ↑↑↑ */
+    /* メンバーグリッドのスマホ対応 */
+    .member-grid {
+        /* grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); */
+        /* ↑↑↑ 親のスタイルをコメントアウトして、スマホ用に上書き ↓↓↓ */
+        grid-template-columns: 1fr 1fr; /* スマホでは2列にする */
+        gap: 15px; /* カード間の隙間を少し狭く */
+    }
 
     /* (↓) 以下は変更なし */
     .countdown-section {
