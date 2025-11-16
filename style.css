@@ -649,8 +649,8 @@ footer {
     .logo {
         flex-shrink: 0;
         width: auto;
-        padding: 0 8px; /* 10pxからさらに詰める */
-        font-size: 0.9em; /* 1.0emからさらに小さく */
+        padding: 0 6px; /* 10pxからさらに詰める */
+        font-size: 0.7em; /* 1.0emからさらに小さく */
         white-space: nowrap;
     }
 
