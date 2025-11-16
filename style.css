@@ -429,11 +429,7 @@ p a:hover {
 
 /* 【新設】メンバーカード */
 .member-card {
-    background-color: #F5EFE6; /* 背景と同じ薄茶色（カードを目立たせる） */
-    border-radius: 8px;
-    padding: 25px 20px;
     text-align: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
 /* プロフィール写真（円形） */
@@ -460,13 +456,14 @@ p a:hover {
     margin: 0 0 10px 0;
 }
 
+/* ↓↓↓ 既存の .member-card .member-bio スタイルを... ↓↓↓ */
 .member-card .member-bio {
     font-size: 0.9em;
     color: #666;
     line-height: 1.6;
-    text-align: left; /* 自己紹介文は読みやすく左詰め */
+    text-align: center; /* ← left から center に変更！ */
 }
-
+/* ↑↑↑ これに差し替え ↑↑↑ */
 /* .btn スタイルは既存のものをそのまま使います */
 footer {
     background-color: #ffffff;
@@ -627,56 +624,81 @@ footer {
 
 /* ========== 【改修】スマホ用スタイル ========== */
 @media (max-width: 600px) {
-    
-    /* ↓↓↓ 既存の @media ... header 関連を... ↓↓↓ */
+    /* ヘッダー全体 (変更なし) */
     header {
-        height: 60px; /* 高さを固定 (autoから変更) */
-        flex-direction: row; /* 縦積み(column)から横並び(row)に戻す */
+        height: 60px;
+        flex-direction: row;
         align-items: stretch;
-        padding: 0; /* 左右の余白を削除 */
+        padding: 0;
     }
     
+    /* 左側 (ロゴ + ナビ) */
     .header-left {
-        flex-direction: row; /* 横並びに戻す */
+        flex-grow: 1; /* 取れるだけの幅を取る */
+        flex-shrink: 1; /* 縮むことも許可 */
+        min-width: 0;   /* flexの縮小バグ防止 */
+        flex-direction: row;
         align-items: stretch;
-        width: auto; /* 100%から自動幅に */
-    }
-    /* ↓↓↓ 既存の @media ... header 関連を... ↓↓↓ */
-    .logo {
         width: auto;
-        padding: 0 8px; /* 10px から 8px に詰める */
-        font-size: 1.0em;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        max-width: 80px; /* 100px から 80px に詰める */
+        overflow: hidden; /* ロゴとナビをこの中に収める */
     }
-    nav {
-        margin-left: 3px; /* 5px から 3px に詰める */
-        margin-top: 0;
-        margin-bottom: 0;
-        justify-content: center;
-    }
-    nav ul {
-        flex-wrap: nowrap;
-    }
-    nav li {
-        margin: 0 2px 0 2px; /* 3px から 2px に詰める */
-    }
-    nav a {
-        font-size: 0.75em; /* 0.8em から 0.75em に詰める */
-        font-weight: normal;
-        padding-bottom: 3px;
-        padding-left: 2px;
-        padding-right: 2px;
+    
+    /* ロゴ (ご要望通り、全部表示) */
+    .logo {
+        flex-shrink: 0; /* ロゴは縮めない */
+        width: auto;
+        padding: 0 15px;
+        font-size: 1.1em;
+        white-space: nowrap; /* ロゴの文字を改行させない */
     }
 
-    .header-right {
-        width: auto;
-        padding: 0 8px 0 0;
+    /* ナビ (スライドさせる) */
+    nav {
+        flex-grow: 1; /* 残りの幅を全部取る */
+        flex-shrink: 1;
+        min-width: 0;
+        margin-left: 5px;
+        margin-top: 0;
+        margin-bottom: 0;
+        
+        overflow-x: auto;   /* ★★★ これが「スライド」の魔法！ ★★★ */
+        overflow-y: hidden;
+        
+        /* スクロールバーを隠す (見た目用) */
+        -ms-overflow-style: none; /* IE/Edge */
+        scrollbar-width: none;    /* Firefox */
     }
+    /* スクロールバーを隠す (Chrome/Safari) */
+    nav::-webkit-scrollbar {
+        display: none;
+    }
+
+    nav ul {
+        flex-wrap: nowrap; /* 折り返さない (1行にする) */
+        justify-content: flex-start;
+    }
+    
+    nav li {
+        margin: 0 8px; /* 項目間のマージンを確保 */
+    }
+
+    nav a {
+        font-size: 1.0em; /* 読みやすいサイズに戻す */
+        font-weight: bold;
+        padding-bottom: 3px;
+        white-space: nowrap; /* 「旅先候補地」などを改行させない */
+    }
+
+    /* 右側 (検索) (ご要望通り、位置を固定) */
+    .header-right {
+        flex-shrink: 0; /* 検索窓は縮めない */
+        width: auto;
+        padding: 0 10px 0 5px;
+    }
+    
+    /* 検索フォーム (幅は維持) */
     .search-form {
-        width: 90px; /* 70px から 90px に広げる！ */
+        width: 90px;
         margin: 0;
     }
     .search-form input[type="text"] {
@@ -685,19 +707,23 @@ footer {
         font-size: 0.8em;
         padding: 4px 8px;
     }
-    
-    /* ↓↓↓ プレースホルダーの文字を小さくするスタイルを追加 ↓↓↓ */
     .search-form input[type="text"]::placeholder {
-        font-size: 0.9em; /* 文字を少し小さく */
+        font-size: 0.9em;
         color: #aaa;
     }
     /* ↑↑↑ ここまでで差し替え ↑↑↑ */
+    
+    
     /* メンバーグリッドのスマホ対応 */
     .member-grid {
         /* grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); */
         /* ↑↑↑ 親のスタイルをコメントアウトして、スマホ用に上書き ↓↓↓ */
         grid-template-columns: 1fr 1fr; /* スマホでは2列にする */
         gap: 15px; /* カード間の隙間を少し狭く */
+    }
+
+    .member-content {
+        padding: 30px 15px; /* 左右の余白を 50px から 15px に */
     }
 
     /* (↓) 以下は変更なし */
