@@ -63,16 +63,26 @@ document.addEventListener('DOMContentLoaded', function() {
 
 document.addEventListener('DOMContentLoaded', function() {
 
-    // ↓↓↓ この検索機能を丸ごと追加 ↓↓↓
+    // 検索機能
     const searchForm = document.getElementById('search-form');
     const searchInput = document.getElementById('search-input');
 
     if (searchForm && searchInput) {
         searchForm.addEventListener('submit', function(e) {
-            e.preventDefault(); // フォーム送信（リロード）をキャンセル
+            e.preventDefault(); 
             
-            const keyword = searchInput.value.toLowerCase().trim(); // 入力値を取得
-            if (!keyword) return; // キーワードが空なら何もしない
+            const keyword = searchInput.value.toLowerCase().trim();
+            if (!keyword) return;
+
+            /* ↓↓↓ ここからイースターエッグを追加 ↓↓↓ */
+            if (keyword === "ありがとう" || keyword === "みんな大好き") {
+                alert("こちらこそ！これからも色んなとこ行って楽しもう！");
+                
+                searchInput.value = ''; // 検索窓をクリア
+                searchInput.blur(); // 検索窓からフォーカスを外す
+                return; // ここで検索処理を終了する
+            }
+            /* ↑↑↑ ここまで追加 ↑↑↑ */
 
             const sections = document.querySelectorAll('section[data-keywords]');
             let found = false;
