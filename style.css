@@ -429,11 +429,7 @@ p a:hover {
 
 /* ↓↓↓ 既存の .member-card スタイルを... ↓↓↓ */
 .member-card {
-    background-color: #F5EFE6; /* 背景と同じ薄茶色（枠組みを復活！） */
-    border-radius: 8px;        /* 角丸を復活 */
-    padding: 25px 20px;        /* 余白を復活 */
     text-align: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* 影を復活 */
 }
 /* ↑↑↑ これに差し替え ↑↑↑ */
 
@@ -466,7 +462,7 @@ p a:hover {
     font-size: 0.9em;
     color: #666;
     line-height: 1.6;
-    text-align: left; /* ← center から left に戻します（こっちのが読みやすい） */
+    text-align: center; /* ← left から center に変更！ */
 }
 /* .btn スタイルは既存のものをそのまま使います */
 footer {
@@ -647,12 +643,14 @@ footer {
         overflow: hidden; /* ロゴとナビをこの中に収める */
     }
     
+    /* (↓) @media (...) { の中を修正 */
+
     /* ロゴ (さらに小さく) */
     .logo {
         flex-shrink: 0;
         width: auto;
-        padding: 0 10px; /* 15pxからさらに詰める */
-        font-size: 1.0em; /* 1.1emから小さく */
+        padding: 0 8px; /* 10pxからさらに詰める */
+        font-size: 0.9em; /* 1.0emからさらに小さく */
         white-space: nowrap;
     }
 
@@ -661,7 +659,7 @@ footer {
         flex-grow: 1;
         flex-shrink: 1;
         min-width: 0;
-        margin-left: 3px; /* 5pxからさらに詰める */
+        margin-left: 2px; /* 3pxからさらに詰める */
         margin-top: 0;
         margin-bottom: 0;
         overflow-x: auto;
@@ -669,7 +667,15 @@ footer {
         -ms-overflow-style: none;
         scrollbar-width: none;
     }
-    
+    /* (↓) nav::-webkit-scrollbar, nav ul, nav li は変更なし */
+
+    nav a {
+        font-size: 0.9em; /* 1.0em から小さく */
+        font-weight: bold;
+        padding-bottom: 3px;
+        white-space: nowrap;
+    }
+
     nav::-webkit-scrollbar {
         display: none;
     }
@@ -681,13 +687,6 @@ footer {
     
     nav li {
         margin: 0 8px; /* 項目間のマージンを確保 */
-    }
-
-    nav a {
-        font-size: 1.0em; /* 読みやすいサイズに戻す */
-        font-weight: bold;
-        padding-bottom: 3px;
-        white-space: nowrap; /* 「旅先候補地」などを改行させない */
     }
 
     /* 右側 (検索) (ご要望通り、位置を固定) */
