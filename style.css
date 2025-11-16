@@ -427,10 +427,15 @@ p a:hover {
     gap: 25px; /* カード間の隙間 */
 }
 
-/* 【新設】メンバーカード */
+/* ↓↓↓ 既存の .member-card スタイルを... ↓↓↓ */
 .member-card {
+    background-color: #F5EFE6; /* 背景と同じ薄茶色（枠組みを復活！） */
+    border-radius: 8px;        /* 角丸を復活 */
+    padding: 25px 20px;        /* 余白を復活 */
     text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* 影を復活 */
 }
+/* ↑↑↑ これに差し替え ↑↑↑ */
 
 /* プロフィール写真（円形） */
 .member-card img {
@@ -461,9 +466,8 @@ p a:hover {
     font-size: 0.9em;
     color: #666;
     line-height: 1.6;
-    text-align: center; /* ← left から center に変更！ */
+    text-align: left; /* ← center から left に戻します（こっちのが読みやすい） */
 }
-/* ↑↑↑ これに差し替え ↑↑↑ */
 /* .btn スタイルは既存のものをそのまま使います */
 footer {
     background-color: #ffffff;
@@ -643,32 +647,29 @@ footer {
         overflow: hidden; /* ロゴとナビをこの中に収める */
     }
     
-    /* ロゴ (ご要望通り、全部表示) */
+    /* ロゴ (さらに小さく) */
     .logo {
-        flex-shrink: 0; /* ロゴは縮めない */
+        flex-shrink: 0;
         width: auto;
-        padding: 0 15px;
-        font-size: 1.1em;
-        white-space: nowrap; /* ロゴの文字を改行させない */
+        padding: 0 10px; /* 15pxからさらに詰める */
+        font-size: 1.0em; /* 1.1emから小さく */
+        white-space: nowrap;
     }
 
-    /* ナビ (スライドさせる) */
+    /* ナビ (ロゴに合わせて詰める) */
     nav {
-        flex-grow: 1; /* 残りの幅を全部取る */
+        flex-grow: 1;
         flex-shrink: 1;
         min-width: 0;
-        margin-left: 5px;
+        margin-left: 3px; /* 5pxからさらに詰める */
         margin-top: 0;
         margin-bottom: 0;
-        
-        overflow-x: auto;   /* ★★★ これが「スライド」の魔法！ ★★★ */
+        overflow-x: auto;
         overflow-y: hidden;
-        
-        /* スクロールバーを隠す (見た目用) */
-        -ms-overflow-style: none; /* IE/Edge */
-        scrollbar-width: none;    /* Firefox */
+        -ms-overflow-style: none;
+        scrollbar-width: none;
     }
-    /* スクロールバーを隠す (Chrome/Safari) */
+    
     nav::-webkit-scrollbar {
         display: none;
     }
