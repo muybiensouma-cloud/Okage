@@ -232,6 +232,103 @@ p a:hover {
     color: #5D4037;
     text-decoration: underline;
 }
+/* ========== しおりセクション ========== */
+.shiori-section {
+    /* 候補地セクションとほぼ同じスタイル */
+    text-align: center; /* 中身のボタンなどは中央寄せに */
+    margin-bottom: 50px;
+    padding-top: 50px; /* ナビからのジャンプ用 */
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+/* 既存の .shiori-content を... */
+.shiori-content {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    
+    /* ↓↓↓ 変更点 ↓↓↓ */
+    width: 90%;             /* 見出し h2 と同じ幅 */
+    max-width: 1000px;      /* 見出し h2 と同じ最大幅 (800pxから変更) */
+    margin: 30px auto 0;    /* 中央寄せ */
+    box-sizing: border-box;
+    padding: 20px 30px;     /* 余白を少し調整 (40pxから変更) */
+}
+/* ↑↑↑ これに差し替え ↑↑↑ */
+
+.shiori-content p {
+    font-size: 1.1em;
+    color: #666;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+/* ========== しおりリストのスタイル (新設) ========== */
+.shiori-list {
+    list-style: none; /* リストの「・」を消す */
+    margin: 0;
+    padding: 0;
+}
+
+/* しおり1行ずつのスタイル */
+.shiori-item {
+    display: flex; /* 中身（情報とボタン）を横並びにする */
+    justify-content: space-between; /* 両端に寄せる */
+    align-items: center; /* 上下中央揃え */
+    padding: 20px 0; /* 各アイテムの上下の余白 */
+    border-bottom: 1px solid #eee; /* アイテム間の区切り線 */
+}
+
+/* 最後のアイテムの区切り線は不要 */
+.shiori-item:last-child {
+    border-bottom: none;
+}
+
+/* 左側の情報（日付とタイトル） */
+.item-info {
+    text-align: left; /* ご希望の「左詰め」 */
+}
+
+.item-date {
+    font-size: 0.9em;
+    color: #888;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.item-title {
+    font-size: 1.2em;
+    color: #333;
+    margin: 0;
+    font-weight: bold;
+}
+
+/* 右側のボタン（複数可） */
+.item-links {
+    display: flex;
+    gap: 10px; /* ボタンが2つ以上ある時の隙間 */
+    flex-shrink: 0; /* スマホで縮まないように */
+}
+
+/* 新しい小さいボタン */
+.btn-small {
+    background-color: #795548;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    padding: 8px 15px; /* .btn より小さく */
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+    font-size: 0.9em;
+    white-space: nowrap; /* ボタン内の文字を改行させない */
+}
+.btn-small:hover {
+    background-color: #5D4037;
+}
+
+/* .btn スタイルは既存のものをそのまま使います */
 footer {
     background-color: #ffffff;
     padding: 30px 0;
@@ -312,6 +409,15 @@ footer {
     width: 90%;             /* カード群と同じ幅 */
     max-width: 1000px;      /* カード群と同じ最大幅 */
     margin: 0 auto 10px auto; /* コンテナ自体は中央、下に見出しとカードの隙間(10px) */
+}
+
+.shiori-section h2 { /* ← これを追加 */
+    font-size: 1.8em;
+    color: #5D4037;
+    text-align: left;
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto 10px auto;
 }
 
 /* 候補地カードのスタイル */
@@ -478,6 +584,31 @@ footer {
         font-size: 1.1em;
     }
     /* ↑↑↑ ここまで追加 ↑↑↑ */
+    /* (↓) @media (...) { の中に追加 */
+    
+    /* しおりセクションのスマホ対応 */
+    .shiori-content {
+        padding: 10px 15px; /* スマホでは余白を狭く */
+    }
+    
+    .shiori-item {
+        flex-direction: column; /* 縦積みに変更 */
+        align-items: flex-start; /* 全体を左揃えに */
+        padding: 15px 0;
+    }
+    
+    .item-title {
+        font-size: 1.1em;
+    }
+    
+    .item-links {
+        margin-top: 15px; /* 情報とボタンの間に隙間 */
+        width: 100%; /* ボタンエリアを横幅いっぱいに */
+    }
 
-
-}
+    .btn-small {
+        width: 100%; /* ボタン自体も横幅いっぱいに */
+        box-sizing: border-box; /* 枠線がはみ出ないように */
+        text-align: center;
+    }
+} 
