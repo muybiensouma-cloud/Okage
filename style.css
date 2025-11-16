@@ -649,8 +649,8 @@ footer {
     .logo {
         flex-shrink: 0;
         width: auto;
-        padding: 0 6px; /* 10pxからさらに詰める */
-        font-size: 0.7em; /* 1.0emからさらに小さく */
+        padding: 0 5px; /* 10pxからさらに詰める */
+        font-size: 0.6em; /* 1.0emからさらに小さく */
         white-space: nowrap;
     }
 
@@ -670,7 +670,7 @@ footer {
     /* (↓) nav::-webkit-scrollbar, nav ul, nav li は変更なし */
 
     nav a {
-        font-size: 0.9em; /* 1.0em から小さく */
+        font-size: 0.8em; /* 1.0em から小さく */
         font-weight: bold;
         padding-bottom: 3px;
         white-space: nowrap;
