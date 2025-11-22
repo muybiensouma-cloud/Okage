@@ -33,30 +33,29 @@ header {
     align-items: stretch; /* 中身の高さを揃える */
 }
 
-/* 【改修】ロゴ (任天堂スタイル) */
+/* 【改修】ロゴ (画像に変更) */
 .logo {
-    font-size: 1.5em;
-    font-weight: bold;
-    color: #ffffff;
+    height: 100%; /* ヘッダーの高さに合わせる */
     text-decoration: none;
-    
-    background-color: #795548; /* 茶色の背景 */
-    transition: background-color 0.2s ease;
-    
-    /* 【重要】上下のpaddingを0にして、高さを100%に */
-    padding: 0 30px; /* 上下0, 左右30px */
-    height: 100%;
-    
-    /* 中の文字を上下中央に配置 */
     display: flex;
-    align-items: center;
+    align-items: center; /* 上下中央揃え */
     justify-content: center;
+    padding: 0 15px; /* 画像の左右に少し余白 */
     
-    /* paddingが高さに影響しないように */
-    box-sizing: border-box; 
+    /* 背景色は画像に含まれているので、CSSの背景色は削除しました */
+    /* もし画像の背景が透明なら background-color: #795548; を復活させてください */
 }
-.logo:hover {
-    background-color: #5D4037;
+
+/* 画像自体のサイズ設定（追加） */
+.logo img {
+    height: 50px; /* ヘッダー(70px)より少し小さくして余白を作る */
+    width: auto;  /* 横幅は自動調整 */
+    object-fit: contain; /* 縦横比を崩さない */
+    transition: opacity 0.2s; /* ホバー時にふわっとさせる */
+}
+
+.logo:hover img {
+    opacity: 0.8; /* カーソルを乗せた時に少し薄くする */
 }
 
 /* 【改修】ナビゲーション (ロゴの隣) */
@@ -646,13 +645,16 @@ footer {
     
     /* (↓) @media (...) { の中を修正 */
 
-    /* ロゴ (さらに小さく) */
+    /* ロゴ (スマホ対応：画像サイズ調整) */
     .logo {
         flex-shrink: 0;
         width: auto;
-        padding: 0 4px; /* 10pxからさらに詰める */
-        font-size: 0.5em; /* 1.0emからさらに小さく */
-        white-space: nowrap;
+        padding: 0 5px;
+    }
+    
+    /* スマホでは画像を少し小さく */
+    .logo img {
+        height: 35px; /* PCの50pxから35pxに縮小 */
     }
 
     /* ナビ (ロゴに合わせて詰める) */
