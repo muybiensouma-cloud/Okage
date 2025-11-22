@@ -649,12 +649,12 @@ footer {
     .logo {
         flex-shrink: 0;
         width: auto;
-        padding: 0 5px;
+        padding: 0px;
     }
     
     /* スマホでは画像を少し小さく */
     .logo img {
-        height: 35px; /* PCの50pxから35pxに縮小 */
+        height: 70px; /* PCの50pxから35pxに縮小 */
     }
 
     /* ナビ (ロゴに合わせて詰める) */
